@@ -14,7 +14,8 @@ module Api
       end
 
       def show
-        render json: ProductSerializer.new(@product).serializable_hash
+        options = { include: [:user] }
+        render json: ProductSerializer.new(@product, options).serializable_hash
       end
 
       def create
