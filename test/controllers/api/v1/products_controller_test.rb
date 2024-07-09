@@ -57,7 +57,7 @@ module Api
       test 'should destroy product' do
         assert_difference('Product.count', -1) do
           delete api_v1_product_url(@product), headers: { Authorization: JsonWebToken.encode(user_id: @product.user_id) },
-          as: :json
+                                               as: :json
         end
         assert_response :no_content
       end
@@ -65,7 +65,7 @@ module Api
       test 'should forbid destroy product' do
         assert_no_difference('Product.count') do
           delete api_v1_product_url(@product), headers: { Authorization: JsonWebToken.encode(user_id: users(:two).id) },
-          as: :json
+                                               as: :json
         end
         assert_response :forbidden
       end
