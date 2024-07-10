@@ -9,7 +9,7 @@ module Api
       before_action :check_owner, only: %i[update destroy]
 
       def index
-        @products = Product.all
+        @products = Product.search(params)
         render json: ProductSerializer.new(@products).serializable_hash
       end
 
