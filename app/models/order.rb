@@ -8,4 +8,11 @@ class Order < ApplicationRecord
   def set_total!
     self.total = products.map(&:price).sum
   end
+
+  def build_placements_with_product_ids_and_quantities(product_ids_and_quantites)
+    product_ids_and_quantites.each do |product_id_and_quantity|
+      placement = placements.build(product_id: product_id_and_quantity[:product_id])
+      yeild placement if block_given?
+    end
+  end
 end

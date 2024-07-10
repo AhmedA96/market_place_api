@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrderMailer < ApplicationMailer
   default from: 'no-reply@marketplace.com'
   def send_confirmation(order)
